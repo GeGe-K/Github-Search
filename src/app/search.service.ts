@@ -42,7 +42,7 @@ export class SearchService {
         this.user.email=response.email;
         this.user.html_url=response.html_url;
         this.user.repo_url=response.repo_url;
-        this.user.created_at=response.created_at;
+        this.user.created_on=response.created_at;
         resolve()
       },
       error =>{

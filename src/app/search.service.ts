@@ -6,11 +6,11 @@ import  'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class SearchService {
-  
+
   private username:string;
   private clientid = 'cc22117508c88bad6c9b';
   private clientsecret = '6e4925f8d5aa7c584bd8e57cb272a40f041a49af';
-  constructor(private http:http) {
+  constructor(private _http:http) {
     console.log('service is ready');
     this.username = 'GeGe-K';
   }

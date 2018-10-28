@@ -4,7 +4,7 @@ import { User } from './user'
 import { environment } from '../environments/environment';
 import { reject } from 'q';
 import { resolve } from 'url';
-// import { Repo } from '.repo';
+import { Repo } from './repo';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class SearchService {
 
   constructor(private http: HttpClient) {
     this.user=new User('','','',0,0,0,'','','',new Date());
+    this.repo=new Repo('','',new Date(),new Date(),'','');
   }
 
   getUserInfo(name) {
@@ -52,5 +53,27 @@ export class SearchService {
     })
     return promise
   }
-  
+  getRepoInfo(username){
+    interface ApiResponse{
+      name:string
+      description:string;
+      html_url:string;
+      created_on:Date;
+      updated_on:Date;
+      homepage:string;
+    }
+    let promise = new Promise ((resolve,reject) => {
+      this.http.get<ApiResponse>(environment.apiUrl + username +environment.key).toPromise()then(response => {
+
+        this.repo=response;
+
+        resolve();
+      },
+      error =>{
+        console.log= ("Repo Not Found. Try again 😊");
+        reject(error);
+      })
+     })
+     result promise;
+  }
  }

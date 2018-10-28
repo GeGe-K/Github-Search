@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { SearchService } from '.seach.service';
+// import { HttpModule } from '@angular/http';
+import { SearchService } from './search.service';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 
@@ -12,7 +12,7 @@ import { UserComponent } from './user/user.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    // HttpModule
   ],
   providers: [SearchService],
   bootstrap: [AppComponent]

@@ -16,7 +16,7 @@ export class SearchService {
   }
 
   getUserInfo(){
-    return this.http.get('https://api.github.com/users/GeGe-K' + this.username + '?cliend_id=' +  this.clientid + '&client_secret=' + this.clientsecret)
+    return this._http.get('https://api.github.com/users/GeGe-K' + this.username + '?cliend_id=' +  this.clientid + '&client_secret=' + this.clientsecret)
     .map(res => res.json());
   }
 }

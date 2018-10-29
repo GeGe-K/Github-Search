@@ -12,6 +12,8 @@ import { Repo } from './repo';
 export class SearchService {
   
   user:User;
+  repo:Repo;
+
 
   constructor(private http: HttpClient) {
     this.user=new User('','','',0,0,0,'','','',new Date());
@@ -63,17 +65,18 @@ export class SearchService {
       homepage:string;
     }
     let promise = new Promise ((resolve,reject) => {
-      this.http.get<ApiResponse>(environment.apiUrl + username +environment.key).toPromise()then(response => {
+      this.http.get<ApiResponse>(environment.apiUrl + name +environment.key).toPromise().then(response => {
 
         this.repo=response;
 
-        resolve();
+        resolve()
       },
-      error =>{
-        console.log= ("Repo Not Found. Try again 😊");
-        reject(error);
-      })
+      // // error =>{
+      // //   console.log= ("Repo Not Found. Try again 😊");
+      // //   reject(error);
+      // }
+      )
      })
-     result promise;
+     return promise;
   }
  }

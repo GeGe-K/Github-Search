@@ -1,27 +1,49 @@
 # GitSearch
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+## Autour
 
-## Development server
+### *Gloria Givondo* (2018/10/27)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Description
 
-## Code scaffolding
+This is a web-page that allows the user to search GitHub users..
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tech Used
 
-## Build
+1. HTML
+2. CSS and bootstrap
+3. Javascript
+4. Git
+5. Angular 6
+6. Typescript
+7. Atom text editor
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## How to use
 
-## Running unit tests
+1. A user fills the "Enter GitHubusername" form. 
+2. The user can view the user's Git profile and deployed sites.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Pre-requisites
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+1. To clone this project to your local folder, you will first need to install git. Use this command in your terminal ```$ sudo apt install git-all```
+2. The user will also require angular ```$ npm install -g @angular/cli```
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Setup
+
+1. To access this project, you will need to clone it.
+2. Use this command in your terminal. git clone https://github.com/GeGe-K/GitHub-Search
+
+## Known Bugs
+
+There are no known bugs. Contact gloriagivondo@gmail.com in-case of any bugs.
+
+## Live Site
+
+You can view the live site https://GeGe-K.github.io/Github-Search/
+
+## License
+
+The content of this site is license under the MIT license
+Copyright (c) 2018 **Gloria**

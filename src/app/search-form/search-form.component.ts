@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
-impo
+import { Search } from '../search';
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',

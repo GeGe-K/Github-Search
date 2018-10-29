@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { DateCountPipe } from './date-count.pipe';
 import { RepoComponent } from './repo/repo.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     DateCountPipe,
-    RepoComponent
+    RepoComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,

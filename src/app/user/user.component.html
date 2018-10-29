@@ -1,3 +1,54 @@
-<p>
-  user works!
-</p>
+<div class="container-fluid">
+    <ng-progress></ng-progress>
+    <h1 class="header">Github Search</h1>
+    <form action="">
+      <div class="form-group">
+        <app-search-form></app-search-form>
+      </div>
+      <div id="user">
+        <p id="username">Github username is <span>{{user.name}}</span></p>
+      </div>
+    </form>
+      <div id="body">
+          <div class="row">
+            <div class col-sm-3>
+              <img src="{{user.avatar_url}}" class="img-circle" alt="User Image">
+            </div>
+            <div class="col-sm-3">
+              <ul>
+                <li *ngIf="user,email">Email Address: <a href="{{user.email}}" target="_blank" {{user.email}}></a></li>
+                <li *ngIf="user.created_on">Account created on: {{user.created_on | date}}</li>
+              </ul>
+            </div>
+              <div class="col-sm-4" id=repos>
+                  <p>
+                      <span class="label label-info" id="labels">{{user.followers}} Followers</span>
+                      <span class="label label-warning" id="labels">{{user.following}} Following</span>
+                      <span class="label label-danger" id="labels">{{user.repo}} Repositories</span>
+                    </p>
+                    <div>
+                      <p><a href="{{user.html}}" target="_blank" class="btn btn-success btn-sm" id="view"> View profile on Github  <span class="glyphicon glyphicon-share-alt"></span></a></p>
+                    </div>
+                    <h2 class="Repositories"></h2>
+                    <div class="card"></div>
+                    <div *ngFor="let repo of search.repo ; let i = index">
+                        <p class="clearfix">
+                          <span class="reposs"> {{search.repo[i].name}} </span>
+                        </p>
+                        <p class="description">{{search.repo[i].description}}</p>
+                        <br>
+                        <p class="creation-date"><b class="dates">Date created:</b><b>{{search.repo[i].created_on|date}}</b></p>
+                        <br>
+                        <p class="update-date"><b class="dates">Updated on:</b>   <b>{{search.repo[i].updated_on|date}}</b></p>
+                        <br>
+                        <a href="{{search.repo[i].html_url}}" target="_blank" class="btn btn-sm btn-warning pull-right buttons">View this project on Github <span class="glyphicon glyphicon-share-alt"></span></a>
+                        <br>
+                        <a href="{{search.repo[i].homepage}}" target="_blank" *ngIf="search.repo[i].homepage" class="btn btn-sm btn-success pull-right buttons">View Deployed Page<span class="glyphicon glyphicon-share-alt"></span></a>
+                      </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,9 @@
-<p>
-  search-form works!
-</p>
+<div class="container">
+  <form (ngSubmit)="submitUser(name)" #userForm="ngForm">
+    <div class="form-group">
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="inputtext" id="input" placeholder="Enter Github username" [(ngModel)]="newSearch.name" name="name" (keyup)="submitUser(name)" #name="ngModel">
+      </div>
+    </div>
+  </form>
+</div>

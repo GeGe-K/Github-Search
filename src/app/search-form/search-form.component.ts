@@ -7,7 +7,7 @@ import { Search } from '../search';
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent implements OnInit {
-  newSearch = new Search ('');
+  newSearch = new Search ("");
 
   submitUser(name){
     this.search.getUserInfo(name.val);

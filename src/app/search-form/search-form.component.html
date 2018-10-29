@@ -1,9 +1,11 @@
-<div class="container">
-  <form (ngSubmit)="submitUser(name)" #userForm="ngForm">
-    <div class="form-group">
-      <div class="col-sm-6">
-        <input type="text" class="form-control" id="inputtext" id="input" placeholder="Enter Github username" [(ngModel)]="newSearch.name" name="name" (keyup)="submitUser(name)" #name="ngModel">
+<div class="container-fluid">
+  <div id="form">
+    <h2>Search GitHub User</h2>
+    <form (ngSubmit)="submitUser(name)" #userForm="ngForm">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newUser.name" class="form-control" name="name" #name="ngModel" placeholder="Github username">
       </div>
-    </div>
-  </form>
-</div>
+      <button class="btn btn-info btn-sm" type="submit"> Search </button>
+    </form>
+  </div>
+ 

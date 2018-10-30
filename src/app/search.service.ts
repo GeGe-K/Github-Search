@@ -12,12 +12,12 @@ import { Repo } from './repo';
 export class SearchService {
   
   user:User;
-  repo:Repo;
+  // repo:Repo;
 
 
   constructor(private http: HttpClient) {
     this.user=new User('','','',0,0,0,'','','',new Date());
-    this.repo=new Repo('','',new Date(),new Date(),'','');
+    // this.repo=new Repo('','',new Date(),new Date(),'','', '');
   }
 
   getUserInfo(name) {
@@ -35,17 +35,18 @@ export class SearchService {
 
     }
     let promise = new Promise ((resolve,reject) => {
-      this.http.get<ApiResponse>(environment.apiUrl + name + environment.key).toPromise().then(response => {
+      this.http.get<ApiResponse>(`https://api.github.com/users/${name}?client_id=${environment.Client_ID}&client_secret=${environment.Client_Secret}`).toPromise().then(response => {
+        console.log(response)
         this.user.name=response.name;
-        this.user.avatar_url=response.avatar_url;
-        this.user.bio=response.bio;
-        this.user.followers=response.followers;
-        this.user.following=response.following;
-        this.user.repos=response.repos;
-        this.user.email=response.email;
-        this.user.html_url=response.html_url;
-        this.user.repo_url=response.repo_url;
-        this.user.created_on=response.created_at;
+        this.user.avatar_url=response["avatar_url"];
+        this.user.bio=response["bio"];
+        this.user.followers=response["followers"];
+        this.user.following=response["following"];
+        this.user.repos=response["repos"];
+        this.user.email=response["email"];
+        this.user.html_url=response["html_url"];
+        this.user.svn_url=response["repo_url"];
+        this.user.created_on=response["created_at"];
         resolve()
       },
       error =>{
@@ -56,18 +57,30 @@ export class SearchService {
     return promise
   }
   getRepoInfo(username){
+    let repos = []
     interface ApiResponse{
       name:string
       description:string;
       html_url:string;
+      svn_url:string;
       created_on:Date;
       updated_on:Date;
       homepage:string;
     }
     let promise = new Promise ((resolve,reject) => {
-      this.http.get<ApiResponse>(environment.apiUrl + name +environment.key).toPromise().then(response => {
+      this.http.get<ApiResponse>(`https://api.github.com/users/${username}/repos?client_id=${environment.Client_ID}&client_secret=${environment.Client_Secret}`).toPromise().then(response => {
+        for(let i = 0; i < response["length"]; i++) {
+          let repo=new Repo('','',new Date(),new Date(),'','', '');
+          repo.name=response.name;
+          repo.description=response.description;
+          repo.html_url=response.html_url;
+          repo.svn_url=response.svn_url;
+          repo.created_on=response.created_on;
+          repo.updated_on=response.updated_on;
+          repo.homepage=response.homepage;
+          repos.push(repo)
+        }
 
-        this.repo=response;
 
         resolve()
       },
@@ -77,6 +90,6 @@ export class SearchService {
       // }
       )
      })
-     return promise;
+     return repos
   }
  }

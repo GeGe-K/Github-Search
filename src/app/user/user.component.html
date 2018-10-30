@@ -12,11 +12,11 @@
       <div id="body">
           <div class="row">
             <div class col-sm-3>
-              <img src="{{user.avatar_url}}" class="img-circle" alt="User Image">
+              <img src={{user.avatar_url}} class="img-rounded" alt="User Image">
             </div>
             <div class="col-sm-3">
               <ul>
-                <li *ngIf="user,email">Email Address: <a href="{{user.email}}" target="_blank" {{user.email}}></a></li>
+                <li *ngIf="user.email">Email Address: <a href="{{user.email}}" target="_blank"></a></li>
                 <li *ngIf="user.created_on">Account created on: {{user.created_on | date}}</li>
               </ul>
             </div>
@@ -27,7 +27,7 @@
                       <span class="label label-danger" id="labels">{{user.repo}} Repositories</span>
                     </p>
                     <div>
-                      <p><a href="{{user.html}}" target="_blank" class="btn btn-success btn-sm" id="view"> View profile on Github  <span class="glyphicon glyphicon-share-alt"></span></a></p>
+                      <p><a href={{user.html_url}} target="_blank" class="btn btn-success btn-sm" id="view"> View profile on Github  <span class="glyphicon glyphicon-share-alt"></span></a></p>
                     </div>
                     <h2 class="Repositories"></h2>
                     <div class="card"></div>
@@ -48,8 +48,8 @@
                   </div>
               </div>
           </div>
-        </div>
-      </div>
+        <!-- </div> -->
+      <!-- </div>
     </div>
   </div>
-</div>
+</div> -->

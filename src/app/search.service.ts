@@ -36,13 +36,13 @@ export class SearchService {
     }
     let promise = new Promise ((resolve,reject) => {
       this.http.get<ApiResponse>(`https://api.github.com/users/${name}?client_id=${environment.Client_ID}&client_secret=${environment.Client_Secret}`).toPromise().then(response => {
-        console.log(response)
+        console.log(response);
         this.user.name=response.name;
         this.user.avatar_url=response["avatar_url"];
         this.user.bio=response["bio"];
         this.user.followers=response["followers"];
         this.user.following=response["following"];
-        this.user.repos=response["repos"];
+        this.user.repos=response["public_repos"];
         this.user.email=response["email"];
         this.user.html_url=response["html_url"];
         this.user.svn_url=response["repo_url"];

@@ -11,29 +11,29 @@
     </form>
      <div class="row">
       <div class="col-sm-3" id="user-details">
-       <img src={{user.avatar_url}}  alt="User Image">
+       <img class="w-75" src={{user.avatar_url}}  alt="User Image">
        <p id="bio"> {{user.bio}} </p>
        <p *ngIf="user.email">Email Address: <a href="{{user.email}}" target="_blank"></a></p>
       </div>
-        <div class="col-sm-4" id="acc-det">
-          <p>
-            <span class="badge badge-info" id="labels">{{user.followers}} Followers</span>
-            <span class="badge badge-warning" id="labels">{{user.following}} Following</span>
-            <span class="badge badge-danger" id="labels">{{user.repos}} Repositories</span>
-          </p>
-        </div>
-           <div class="card">
-             <div *ngFor="let repo of search.repo ; let i = index">
-               <p class=repo-name>
-                 <span class="work"> {{search.repo[i].name}} </span>
-                </p>
-                <p class="description">{{search.repo[i].description}}</p>
-                <p class="creation-date"><b class="dates">Date created:{{search.repo[i].created_on|date}}</b></p>
-                <p class="update-date"><b class="dates">Updated on:{{search.repo[i].updated_on|date}}</b></p>
-                <a href="{{search.repo[i].html_url}}" target="_blank" class="btn btn-sm btn-warning pull-right buttons">View this project on Github <span class="glyphicon glyphicon-share-alt"></span></a>
-                 <a href="{{search.repo[i].homepage}}" target="_blank" *ngIf="search.repo[i].homepage" class="btn btn-sm btn-success pull-right buttons">View Deployed Page<span class="glyphicon glyphicon-share-alt"></span></a>
-              </div> 
-          </div>
+      <div class="col-sm-4" id="acc-det">
+        <p>
+          <span class="badge badge-info" id="labels">{{user.followers}} Followers</span>
+          <span class="badge badge-warning" id="labels">{{user.following}} Following</span>
+          <span class="badge badge-danger" id="labels">{{user.repos}} Repositories</span>
+        </p>
+      </div>
+          <!-- <div class="card"> -->
+            <div *ngFor="let repo of repos ; let i = index">
+              <p class=repo-name>
+                <span class="work"> {{repo.name}} </span>
+              </p>
+              <p class="description">{{search.repo[i].description}}</p>
+              <p class="creation-date"><b class="dates">Date created:{{search.repo[i].created_on|date}}</b></p>
+              <p class="update-date"><b class="dates">Updated on:{{search.repo[i].updated_on|date}}</b></p>
+              <a href="{{search.repo[i].html_url}}" target="_blank" class="btn btn-sm btn-warning pull-right buttons">View this project on Github <span class="glyphicon glyphicon-share-alt"></span></a>
+                <a href="{{search.repo[i].homepage}}" target="_blank" *ngIf="search.repo[i].homepage" class="btn btn-sm btn-success pull-right buttons">View Deployed Page<span class="glyphicon glyphicon-share-alt"></span></a>
+            </div> 
+        <!-- </div> -->
       </div>
 </div>
        

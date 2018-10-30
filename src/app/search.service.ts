@@ -36,7 +36,6 @@ export class SearchService {
     }
     let promise = new Promise ((resolve,reject) => {
       this.http.get<ApiResponse>(`https://api.github.com/users/${name}?client_id=${environment.Client_ID}&client_secret=${environment.Client_Secret}`).toPromise().then(response => {
-        console.log(response);
         this.user.name=response.name;
         this.user.avatar_url=response["avatar_url"];
         this.user.bio=response["bio"];
@@ -63,8 +62,8 @@ export class SearchService {
       description:string;
       html_url:string;
       svn_url:string;
-      created_on:Date;
-      updated_on:Date;
+      created_at:Date;
+      updated_at:Date;
       homepage:string;
     }
     let promise = new Promise ((resolve,reject) => {
@@ -75,8 +74,8 @@ export class SearchService {
           repo.description=response.description;
           repo.html_url=response.html_url;
           repo.svn_url=response.svn_url;
-          repo.created_on=response.created_on;
-          repo.updated_on=response.updated_on;
+          repo.created_on=response.created_at;
+          repo.updated_on=response.updated_at;
           repo.homepage=response.homepage;
           repos.push(repo)
         }
@@ -90,6 +89,7 @@ export class SearchService {
       // }
       )
      })
-     return repos
+     console.log(repos);
+     return repos;
   }
  }

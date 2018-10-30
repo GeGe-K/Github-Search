@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserComponent implements OnInit {
 
   public userName = '';
-  repo:Repo[] ;
+  repos:Repo[] ;
   user:User;
 
   constructor(private search:SearchService) { }
@@ -24,8 +24,8 @@ export class UserComponent implements OnInit {
     console.log(this.user);
 
     this.search.getRepoInfo(this.userName);
-    this.repo = this.search.getRepoInfo(this.userName)
-    console.log(this.repo);
+    this.repos = this.search.getRepoInfo(this.userName)
+    console.log(this.repos);
     
   }
 

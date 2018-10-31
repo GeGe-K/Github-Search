@@ -9,10 +9,11 @@ import { Repo } from './repo';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SearchService {
   
   user:User;
-  // repo:Repo;
+  repos = [];
 
 
   constructor(private http: HttpClient) {
@@ -49,14 +50,14 @@ export class SearchService {
         resolve()
       },
       error =>{
-        this.user.name = "User Not Found. Try again 😊";
+        this.user.name = "Not Found. Try again 😊";
         reject(error);
       })
     })
     return promise
   }
+
   getRepoInfo(username){
-    let repos = []
     interface ApiResponse{
       name:string
       description:string;
@@ -67,29 +68,22 @@ export class SearchService {
       homepage:string;
     }
     let promise = new Promise ((resolve,reject) => {
-      this.http.get<ApiResponse>(`https://api.github.com/users/${username}/repos?client_id=${environment.Client_ID}&client_secret=${environment.Client_Secret}`).toPromise().then(response => {
-        for(let i = 0; i < response["length"]; i++) {
+      this.http.get<ApiResponse[]>(`https://api.github.com/users/${username}/repos?client_id=${environment.Client_ID}&client_secret=${environment.Client_Secret}`).toPromise().then(response => {
+        for(let i of response) {
           let repo=new Repo('','',new Date(),new Date(),'','', '');
-          repo.name=response.name;
-          repo.description=response.description;
-          repo.html_url=response.html_url;
-          repo.svn_url=response.svn_url;
-          repo.created_on=response.created_at;
-          repo.updated_on=response.updated_at;
-          repo.homepage=response.homepage;
-          repos.push(repo)
+          repo.name=i.name;
+          repo.description=i.description;
+          repo.html_url=i.html_url;
+          repo.svn_url=i.svn_url;
+          repo.created_on=i.created_at;
+          repo.updated_on=i.updated_at;
+          repo.homepage=i.homepage;          
+          this.repos.push(repo);
+          resolve();
         }
-
-
-        resolve()
-      },
-      // // error =>{
-      // //   console.log= ("Repo Not Found. Try again 😊");
-      // //   reject(error);
-      // }
-      )
-     })
-     console.log(repos);
-     return repos;
+      }).catch(err => reject(err));
+     });
+     console.log(this.repos);
+     return promise;    
   }
- }
+}

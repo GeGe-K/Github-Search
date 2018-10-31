@@ -10,6 +10,10 @@ import { UserComponent } from './user/user.component';
 import { DateCountPipe } from './date-count.pipe';
 import { RepoComponent } from './repo/repo.component';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { RouterModule, Routes } from '@angular/router';
+
+
+
 
 @NgModule({
   declarations: [
@@ -17,14 +21,14 @@ import { SearchFormComponent } from './search-form/search-form.component';
     UserComponent,
     DateCountPipe,
     RepoComponent,
-    SearchFormComponent
+    SearchFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     NgProgressModule.forRoot(),
-    NgProgressHttpModule.forRoot()
+    NgProgressHttpModule.forRoot(),
   ],
   providers: [SearchService],
   bootstrap: [AppComponent]

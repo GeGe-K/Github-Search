@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
     console.log(this.user);
 
     this.search.getRepoInfo(this.userName);
-    this.repos = this.search.getRepoInfo(this.userName)
+    this.repos = this.search.repos;
     console.log(this.repos);
     
   }

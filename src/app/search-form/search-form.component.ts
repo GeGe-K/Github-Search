@@ -12,6 +12,7 @@ export class SearchFormComponent implements OnInit {
   submitUser(name){
     this.search.getUserInfo(name.viewModel);
     this.search.getRepoInfo(name.viewModel);
+    this.newSearch = new Search("")
   }
   constructor(private search:SearchService) { }
 

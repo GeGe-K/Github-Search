@@ -17,12 +17,13 @@ export class SearchService {
 
 
   constructor(private http: HttpClient) {
-    this.user=new User('','','',0,0,0,'','','',new Date());
+    this.user=new User('','','','',0,0,0,'','','',new Date());
     // this.repo=new Repo('','',new Date(),new Date(),'','', '');
   }
 
   getUserInfo(name) {
     interface ApiResponse {
+      login:string
       name:string;
       avatar_url:string;
       bio:string;
@@ -37,6 +38,7 @@ export class SearchService {
     }
     let promise = new Promise ((resolve,reject) => {
       this.http.get<ApiResponse>(`https://api.github.com/users/${name}?client_id=${environment.Client_ID}&client_secret=${environment.Client_Secret}`).toPromise().then(response => {
+        this.user.login=response.login;
         this.user.name=response.name;
         this.user.avatar_url=response["avatar_url"];
         this.user.bio=response["bio"];
@@ -59,7 +61,7 @@ export class SearchService {
 
   getRepoInfo(username){
     interface ApiResponse{
-      name:string
+      name:string;
       description:string;
       html_url:string;
       svn_url:string;

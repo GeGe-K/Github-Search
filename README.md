@@ -1,6 +1,6 @@
 # GitSearch
 
-## Autour
+## Author
 
 ### *Gloria Givondo* (2018/10/27)
 

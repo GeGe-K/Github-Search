@@ -33,7 +33,7 @@ This is a web-page that allows the user to search GitHub users..
 ## Setup
 
 1. You will need to clone this project to you local folder.
-2. Use this command in your terminal. ```git clone https://github.com/GeGe-K/Git-Search```
+2. Use this command in your terminal. ```git clone https://github.com/GeGe-K/Github-Search```
 3. Run `ng serve` on the terminal. Navigate to `http://localhost:4200/`. The app will automatically reload.
 
 ## Known Bugs
@@ -42,7 +42,7 @@ There are no known bugs. Contact gloriagivondo@gmail.com in-case of any bugs.
 
 ## Live Site
 
-You can view the live site https://GeGe-K.github.io/Git-Search/
+You can view the live site https://GeGe-K.github.io/Github-Search/
 
 ## License
 
